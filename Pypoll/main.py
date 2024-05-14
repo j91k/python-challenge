@@ -8,6 +8,8 @@ with open(csvpath, encoding='UTF-8') as csvfile:
     next(csvreader) 
     ballots = []
     candidates = []
+    max_votes = 0
+    winner = ""
 
     for row in csvreader:
         ballot = row[0]
@@ -17,9 +19,7 @@ with open(csvpath, encoding='UTF-8') as csvfile:
 
     unique_candidates = set(candidates)
     total_votes = len(ballots)
-    max_votes = 0
-    winner = ""
-
+    
     print("Election results")
     print("-------------------------")
     print("                            ")
@@ -35,7 +35,8 @@ with open(csvpath, encoding='UTF-8') as csvfile:
         if votes_for_candidate > max_votes:
             max_votes = votes_for_candidate
             winner = candidate
-
+    
+    
     print("-------------------------")
     print("                            ")
     print(f"Winner: {winner}")
